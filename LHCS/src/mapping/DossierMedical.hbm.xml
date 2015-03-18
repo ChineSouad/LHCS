@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 5 mars 2015 19:17:38 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="modele.DossierMedical" table="DossierMedical">
+        <id name="id" type="long">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <one-to-one name="patient" class="modele.Patient"></one-to-one>
+        <many-to-one name="medecin" class="modele.Medecin" fetch="join">
+            <column name="MEDECIN" />
+        </many-to-one>
+        <property name="dateCreation" type="java.util.Date">
+            <column name="DATECREATION" />
+        </property>
+    </class>
+</hibernate-mapping>

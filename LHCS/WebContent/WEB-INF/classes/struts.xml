@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+    <constant name="struts.devMode" value="true"></constant>
+    
+    <package name="medecin" extends="struts-default">
+         <action name="medecins">
+            <result>WEB-INF/vue/medecin/EspaceMedecin.jsp</result>
+        </action>
+        <action name="InscriptionMedForm">
+            <result>WEB-INF/vue/medecin/MedecinInscription.jsp</result>
+        </action>
+        <action name="InscriptionMedecin" class="action.medecin.InscriptionMedecin" method="execute">
+           <result>WEB-INF/vue/medecin/validate.jsp</result>
+           <result name="failure">WEB-INF/vue/medecin/signup-failure.jsp</result>
+           <result name="input">WEB-INF/vue/medecin/MedecinInscription.jsp</result>
+       </action>
+       <action name="InscriptionConfirm" class="action.medecin.InscriptionConfirm" method="execute">
+           <result>WEB-INF/vue/medecin/EspaceMedecin.jsp</result>
+           <result name="error">WEB-INF/vue/medecin/signup-failure.jsp</result>
+       </action>
+       <action name="login-input">
+           <result>WEB-INF/vue/medecin/EspaceMedecin.jsp</result>
+       </action>
+       <action name="loginMedecin" class="action.medecin.LoginMedecin" method="execute">
+           <result>WEB-INF/vue/medecin/login-success.jsp</result>
+           <result name="invalide">WEB-INF/vue/medecin/validate.jsp</result>
+           <result name="error">WEB-INF/vue/medecin/login-failure.jsp</result>
+       </action>
+       <action name="send_to_profile" class="action.medecin.SendPatients" method="execute">
+           <result>WEB-INF/vue/medecin/ProfileMedecin.jsp</result>
+       </action>
+       <action name="ajaxTest">
+           <result>WEB-INF/vue/medecin/formulaire.jsp</result>
+       </action>
+       <action name="pp">
+           <result>WEB-INF/vue/patient/pop.jsp</result>
+       </action>
+       <action name="NewPassword" class="action.medecin.NewPassword">
+           <result>WEB-INF/vue/medecin/EspaceMedecin.jsp</result>
+           <result name="error">WEB-INF/vue/medecin/EspaceMedecin.jsp</result>
+       </action>
+       <action name="shownewpwd">
+           <result>WEB-INF/vue/medecin/nouveauMotPasse.jsp</result>
+       </action>
+       <action name="UpdatePwd" class="action.medecin.UpdatePwd">
+           <result>WEB-INF/vue/medecin/EspaceMedecin.jsp</result>
+       </action>
+    </package>
+    <!-- ************************************************************************************* -->
+    
+     <package name="default" extends="json-default" namespace="/">
+        <action name="jsonsample" class="action.medecin.SearchAction">
+             <result type="json">/select.jsp</result>
+        </action>
+    </package>
+    <!--**************************************************************************************-->
+<package name="patient" extends="struts-default">
+    <action name="loginPatient" class="action.patient.LoginPatient" method="execute"> 
+        <result>WEB-INF/vue/patient/loginPatient.jsp</result>
+        <result name="invalide">WEB-INF/vue/patient/validatePatient.jsp</result>
+        <result name="error">WEB-INF/vue/patient/login-failure.jsp</result>
+        </action>
+         <action name="patients">
+           <result>WEB-INF/vue/patient/EspacePatient.jsp</result>
+       </action>
+       <action name="InscriptionPatForm">
+           <result>WEB-INF/vue/patient/InscriptionPatient.jsp</result>
+       </action>
+        <action name="AjoutTuteur" class="action.patient.AjouterTuteur" method="execute">
+           <result>WEB-INF/vue/patient/InscriptionPatient.jsp</result>
+       </action>
+       <action name="InscriptionPatient" class="action.patient.InscriptionPatient" method="execute">
+          <result>WEB-INF/vue/patient/validatePatient.jsp</result> 
+          <result name="error">WEB-INF/vue/patient/EspacePatient.jsp</result> 
+       </action>
+       <action name="ConfirmPatient" class="action.patient.ConfirmPatient" method="execute">
+           <result>WEB-INF/vue/patient/EspacePatient.jsp</result>
+       </action>
+       <action name="ProfilePatient" class="action.patient.ProfilePatient">
+           <result>WEB-INF/vue/patient/ProfilePatient.jsp</result>
+       </action>
+       <action name="DossierCourant" class="action.patient.DossierCourant" method="execute">
+           <result>WEB-INF/vue/patient/Dossier_courant.jsp</result>
+       </action>
+       <action name="ActivitesRecentes">
+           <result>WEB-INF/vue/patient/ActivitePatient.jsp</result>
+       </action>
+</package>
+</struts>

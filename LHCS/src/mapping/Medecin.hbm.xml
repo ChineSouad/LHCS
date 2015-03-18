@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16 mars 2015 18:47:15 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="modele.Medecin" table="Medecin">
+        <id name="id" type="long">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="numOrdre" type="long">
+            <column name="NUMORDRE" />
+        </property>
+        <property name="phoneFixe" type="long">
+            <column name="PHONEFIXE" />
+        </property>
+        <property name="phoneMobile" type="long">
+            <column name="PHONEMOBILE" />
+        </property>
+        <property name="fax" type="long">
+            <column name="FAX" />
+        </property>
+        <property name="nom" type="java.lang.String">
+            <column name="NOM" />
+        </property>
+        <property name="prenom" type="java.lang.String">
+            <column name="PRENOM" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" />
+        </property>
+        <property name="code" type="java.lang.String">
+            <column name="CODE" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        <property name="civilite" type="java.lang.String">
+            <column name="CIVILITE" />
+        </property>
+        <property name="specialite" type="java.lang.String">
+            <column name="SPECIALITE" />
+        </property>
+        <property name="lieuPrestation" type="java.lang.String">
+            <column name="LIEUPRESTATION" />
+        </property>
+        <property name="adresse" type="java.lang.String">
+            <column name="ADRESSE" />
+        </property>
+        <property name="etablissementEtude" type="java.lang.String">
+            <column name="ETABLISSEMENTETUDE" />
+        </property>
+        <property name="modeExercice" type="java.lang.String">
+            <column name="MODEEXERCICE" />
+        </property>
+        <property name="titre" type="java.lang.String">
+            <column name="TITRE" />
+        </property>
+        <property name="dateNaissance" type="java.util.Date">
+            <column name="DATENAISSANCE" />
+        </property>
+        <property name="valide" type="boolean">
+            <column name="VALIDE" />
+        </property>
+        <property name="adherentCnam" type="boolean">
+            <column name="ADHERENTCNAM" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 7 mars 2015 15:59:02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="modele.Patient" table="Patient">
+        <id name="id" type="long">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="telephoneFixe" type="long">
+            <column name="TELEPHONEFIXE" />
+        </property>
+        <property name="telephonePortable" type="long">
+            <column name="TELEPHONEPORTABLE" />
+        </property>
+        <property name="nom" type="java.lang.String">
+            <column name="NOM" />
+        </property>
+        <property name="prenom" type="java.lang.String">
+            <column name="PRENOM" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        
+         <property name="code" type="java.lang.String">
+            <column name="CODE" />
+        </property>
+        <property name="lieuNaissance" type="java.lang.String">
+            <column name="LIEUNAISSANCE" />
+        </property>
+        <property name="adresse" type="java.lang.String">
+            <column name="ADRESSE" />
+        </property>
+        <property name="prenomPere" type="java.lang.String">
+            <column name="PRENOMPERE" />
+        </property>
+        <property name="identifiant" type="java.lang.String">
+            <column name="IDENTIFIANT" />
+        </property>
+        <property name="prenomMere" type="java.lang.String">
+            <column name="PRENOMMERE" />
+        </property>
+        <property name="nomMere" type="java.lang.String">
+            <column name="NOMMERE" />
+        </property>
+        <property name="sexe" type="java.lang.String">
+            <column name="SEXE" />
+        </property>
+        <property name="nationalite" type="java.lang.String">
+            <column name="NATIONALITE" />
+        </property>
+        <property name="profession" type="java.lang.String">
+            <column name="PROFESSION" />
+        </property>
+        <property name="adresseProfession" type="java.lang.String">
+            <column name="ADRESSEPROFESSION" />
+        </property>
+        <property name="civilite" type="java.lang.String">
+            <column name="CIVILITE" />
+        </property>
+        <property name="lienFamilialTuteur" type="java.lang.String">
+            <column name="LIENFAMILIALTUTEUR" />
+        </property>
+        <property name="prenomEpoux" type="java.lang.String">
+            <column name="PRENOMEPOUX" />
+        </property>
+        <property name="typeSang" type="java.lang.String">
+            <column name="TYPESANG" />
+        </property>
+        <property name="poids" type="float">
+            <column name="POIDS" />
+        </property>
+        <property name="dateNaissance" type="java.util.Date">
+            <column name="DATENAISSANCE" />
+        </property>
+        <property name="fumeur" type="boolean">
+            <column name="FUMEUR" />
+        </property>
+        <property name="beneficiaireCNAM" type="boolean">
+            <column name="BENEFICIAIRECNAM" />
+        </property>
+        <property name="valide" type="boolean">
+            <column name="VALIDE" />
+        </property>
+        <many-to-one name="tuteur" class="modele.Tuteur" fetch="join">
+            <column name="TUTEUR" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
