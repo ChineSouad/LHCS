@@ -7,17 +7,19 @@ public class Ordonnance {
 	private Date date;
 	private String maladie;
 	private Medecin medecinResponsable;
+	private Patient patient;
 	
 	public Ordonnance(){
 		
 	}
 	public Ordonnance(long id, Date date, String maladie,
-			Medecin medecinResponsable) {
+			Medecin medecinResponsable, Patient patient) {
 		super();
 		this.id = id;
 		this.date = date;
 		this.maladie = maladie;
 		this.medecinResponsable = medecinResponsable;
+		this.patient=patient;
 	}
 	public long getId() {
 		return id;
@@ -42,6 +44,12 @@ public class Ordonnance {
 	}
 	public void setMedecinResponsable(Medecin medecinResponsable) {
 		this.medecinResponsable = medecinResponsable;
+	}
+	public Patient getPatient() {
+		return patient;
+	}
+	public void setPatient(Patient patient) {
+		this.patient = patient;
 	}
 	
 	

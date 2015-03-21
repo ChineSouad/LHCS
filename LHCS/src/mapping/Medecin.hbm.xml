@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 16 mars 2015 18:47:15 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 21 mars 2015 23:17:58 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="modele.Medecin" table="Medecin">
         <id name="id" type="long">
@@ -34,6 +34,9 @@
         </property>
         <property name="password" type="java.lang.String">
             <column name="PASSWORD" />
+        </property>
+        <property name="identifiantPersonnel" type="java.lang.String">
+            <column name="IDENTIFIANTPERSONNEL" />
         </property>
         <property name="civilite" type="java.lang.String">
             <column name="CIVILITE" />

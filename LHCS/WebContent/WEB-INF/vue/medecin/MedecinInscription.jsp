@@ -3,7 +3,8 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
-<%@ page isELIgnored ="false" %>
+<%@ taglib prefix="sx" uri="/struts-dojo-tags"%>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,9 +17,8 @@
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
 <link href="assets/css/bootstrap-united.css" rel="stylesheet" />
 
-
 <style>
-.error {
+.error { 
 	color: #ff0000;
 	font-size: 0.9em;
 	font-weight: bold;
@@ -36,9 +36,21 @@ input[type="text"],input[type="password"] {
 	height: 40px;
 }
 </style>
-
+<style>
+.datepicker {
+	position: absolute;
+}
+</style>
 
 </head>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".btn").click(function() {
+			$("#myModal").modal('show');
+		});
+	});
+</script>
 <script type="text/javascript">
 	$(document)
 			.ready(
@@ -66,15 +78,28 @@ input[type="text"],input[type="password"] {
 													&& $('#password').val() != $(
 															'#confirmPasswordInput')
 															.val()) {
-												$('#passwordStrength')
+												$('#passwordvalid')
 														.removeClass()
-														.addClass(
-																'alert alert-error')
+
 														.html(
-																'Passwords do not match!');
+																'<img src="assets/images/false.ico" width="50"/>');
 												return false;
 											}
 
+											if ($('#password').val() != ''
+													&& $(
+															'#confirmPasswordInput')
+															.val() != ''
+													&& $('#password').val() == $(
+															'#confirmPasswordInput')
+															.val()) {
+												$('#passwordvalid')
+														.removeClass()
+
+														.html(
+																'<img src="assets/images/true.ico" width="50"/>');
+												return false;
+											}
 											// Must have capital letter, numbers and lowercase letters
 											var strongRegex = new RegExp(
 													"^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$",
@@ -93,36 +118,33 @@ input[type="text"],input[type="password"] {
 												// If ok regex doesn't match the password
 												$('#passwordStrength')
 														.removeClass()
-														.addClass(
-																'alert alert-error')
+
 														.html(
-																'Password must be at least 6 characters long.');
+																'<img src="assets/images/false.ico" width="50"/>');
 
 											} else if (strongRegex.test($(this)
 													.val())) {
 												// If reg ex matches strong password
 												$('#passwordStrength')
 														.removeClass()
-														.addClass(
-																'alert alert-success')
-														.html('Good Password!');
+
+														.html(
+																'<img src="assets/images/true.ico" width="50"/>');
 											} else if (mediumRegex.test($(this)
 													.val())) {
 												// If medium password matches the reg ex
 												$('#passwordStrength')
 														.removeClass()
-														.addClass(
-																'alert alert-info')
+
 														.html(
-																'Make your password stronger with more capital letters, more numbers and special characters!');
+																'<img src="assets/images/false.ico" width="50"/>');
 											} else {
 												// If password is ok
 												$('#passwordStrength')
 														.removeClass()
-														.addClass(
-																'alert alert-error')
+
 														.html(
-																'Weak Password, try using numbers and capital letters.');
+																'<img src="assets/images/false.ico" width="50"/>');
 											}
 
 											return true;
@@ -144,17 +166,28 @@ input[type="text"],input[type="password"] {
 
 				<li><a href="contact.html">Contact</a></li>
 			</div>
-		        </ul>
-	              </div>
-	                 <div id="body" align="center" >
-	                 <h3>Formulaire d'inscription</h3>
-		          <div class="well">
-		<div style="width: 500px" align="left">
-						<s:form id="myForm" action="InscriptionMedecin" theme="bootstrap"
-							validate="true" name="registerForm"
-							cssClass="bs-example form-horizontal" method="post">
-							<fieldset><legend>Donn&eacute;es d'authentification</legend>
-							<s:textfield label="N° d'ordre" name="numOrdre"
+		</ul>
+	</div>
+	<div id="body" align="center">
+
+
+		<!-- img src="assets/images/laboratory.jpg" alt=""-->
+
+ 
+		<div class="well">
+		<div class="tabbable" style="margin-bottom: 18px;">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab">Donn&eacute;es d'authentification</a></li>
+                <li><a href="#tab2" data-toggle="tab">Donn&eacute;es personnelles</a></li>
+                <li><a href="#tab3" data-toggle="tab">Contact</a></li>
+              </ul>
+              <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+                <div class="tab-pane active" id="tab1" style="width: 500px; margin:50px;">
+                  <s:form id="myForm" action="InscriptionPatient" theme="bootstrap"
+					validate="true" name="registerForm"
+					cssClass="bs-example form-horizontal" method="post">
+					
+						<s:textfield label="N° d'ordre" name="numOrdre"
 									cssClass="col-lg-11" placeholder="N° d'ordre" />
 									<s:password label="Password" name="password"
 									cssClass="col-lg-11" placeholder="Password" id="password" />
@@ -164,12 +197,14 @@ input[type="text"],input[type="password"] {
 								<p>
 								<div class="" id="passwordStrength"></div>
 								</p>
-							</fieldset>
-							<fieldset>
-								<legend>Donn&eacute;es Personnelles</legend>
-
-								
-								<s:textfield label="Nom" name="Nom" cssClass="col-lg-11"
+					</s:form>
+                </div>
+                <div class="tab-pane" id="tab2" style="width: 500px;margin:50px;">
+                  <s:form id="myForm" action="InscriptionPatient" theme="bootstrap"
+					validate="true" name="registerForm"
+					cssClass="bs-example form-horizontal" method="post">
+					 
+						 <s:textfield label="Nom" name="Nom" cssClass="col-lg-11"
 									placeholder="Nom" />
 								
 								<s:textfield label="Prénom" name="prenom" cssClass="col-lg-11"
@@ -204,11 +239,15 @@ input[type="text"],input[type="password"] {
 									<s:checkbox name="adherentCnam" fieldValue="true"
 										label="Adhérent CNAM" />
 								</h2>
-							        </fieldset>
-							           <fieldset>
-							      	<legend>Contact</legend>
-
-									<s:textfield label="Adresse email" name="email"
+							       
+					 </s:form>
+                </div>
+                <div class="tab-pane" id="tab3" style="width: 500px;margin:50px;">
+                   <s:form id="myForm" action="InscriptionPatient" theme="bootstrap"
+					validate="true" name="registerForm"
+					cssClass="bs-example form-horizontal" method="post">
+					 
+						<s:textfield label="Adresse email" name="email"
 									cssClass="col-lg-11" placeholder="Email" />
 								
 								<s:textfield maxLength="8" size="8" label="Numéro Téléphone"
@@ -250,13 +289,13 @@ input[type="text"],input[type="password"] {
 										</div>
 									</div>
 								</div>
-						
-							
-							</fieldset>
-						</s:form>
-					</div>
-				</div>
+					</s:form>
+                </div>
+              </div>
+            </div></div>
+				
 			</div>
+	
 	<div id="footer">
 		<div>
 			<p>
@@ -274,7 +313,10 @@ input[type="text"],input[type="password"] {
 				<li id="rss"><a href="#">rss</a></li>
 			</ul>
 		</div>
+
+
 	</div>
 
+	
 </body>
 </html>

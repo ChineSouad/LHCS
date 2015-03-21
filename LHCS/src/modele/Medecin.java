@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Medecin {
 	private long id, numOrdre, phoneFixe,phoneMobile,fax;
-	private String nom,prenom,email,code,password, civilite,specialite,lieuPrestation,adresse,etablissementEtude,modeExercice,titre;
+	private String nom,prenom,email,code,password,identifiantPersonnel, civilite,specialite,lieuPrestation,adresse,etablissementEtude,modeExercice,titre;
 	private Date dateNaissance;
 	private boolean valide,adherentCnam ;
 	
@@ -20,7 +20,7 @@ public class Medecin {
 			long fax, String nom, String prenom, String email, String code,
 			String password, String civilite, String specialite,
 			String lieuPrestation, String adresse, String etablissementEtude,
-			String modeExercice, String titre, boolean valide,
+			String modeExercice, String titre,String identifiantPersonnel, boolean valide,
 			boolean adherentCnam, Date dateNaissance) {
 		super();
 		this.id = id;
@@ -43,6 +43,7 @@ public class Medecin {
 		this.dateNaissance = dateNaissance;
 		this.valide = valide;
 		this.adherentCnam = adherentCnam;
+		this.identifiantPersonnel=identifiantPersonnel;
 	}
 
 	public long getId() {
@@ -164,6 +165,14 @@ public class Medecin {
 	}
 	public void setAdherentCnam(boolean adherentCnam) {
 		this.adherentCnam = adherentCnam;
+	}
+
+	public String getIdentifiantPersonnel() {
+		return identifiantPersonnel;
+	}
+
+	public void setIdentifiantPersonnel(String identifiantPersonnel) {
+		this.identifiantPersonnel = identifiantPersonnel;
 	}
 	
 	

@@ -1,23 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="s" uri="/struts-tags" %>
-    <%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
-    <%@ taglib prefix="sj" uri="/struts-jquery-tags" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="sb" uri="/struts-bootstrap-tags"%>
+<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
+<%@ taglib prefix="sx" uri="/struts-dojo-tags"%>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Esapce Medecin - LHCS</title>
-	<link rel="stylesheet" href="assets/css/style.css" type="text/css">
-	<sb:head includeScripts="false" includeScriptsValidation="false"
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<sb:head includeScripts="false" includeScriptsValidation="false"
 	includeStylesResponsive="true" />
-
+<sj:head jqueryui="true" />
+<title>Espace Medecin - LHCS</title>
+<link rel="stylesheet" href="assets/css/style.css" type="text/css">
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
 <link href="assets/css/bootstrap-united.css" rel="stylesheet" />
 
-
 <style>
-.error {
+.error { 
 	color: #ff0000;
 	font-size: 0.9em;
 	font-weight: bold;
@@ -35,14 +36,21 @@ input[type="text"],input[type="password"] {
 	height: 40px;
 }
 </style>
-<script src="jquery-1.8.3.js">
-		
-	</script>
+<style>
+.datepicker {
+	position: absolute;
+}
+</style>
 
-	<script src="bootstrap/js/bootstrap.js">
-		
-	</script>
 </head>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".btn").click(function() {
+			$("#myModal").modal('show');
+		});
+	});
+</script>
 <body>
 	<div id="header">
 		<a href="index.html" class="logo"><img src="assets/images/logo.png" alt=""></a>
@@ -90,6 +98,7 @@ input[type="text"],input[type="password"] {
 							
 							</fieldset>
 							</s:form>
+
 							</div>
 							</div>
 							</div>
@@ -116,7 +125,7 @@ input[type="text"],input[type="password"] {
 			</ul>
 		</div>
 	</div>
-	<!-- ********* -->
+								<!-- ********* -->
 	  <div class="modal fade" id="basicModal" style="margin: auto;height: 300px;overflow: hidden;" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="false">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

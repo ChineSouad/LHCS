@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
 <link href="assets/css/bootstrap-united.css" rel="stylesheet" />
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
 <style>
 .error { 
 	color: #ff0000;
@@ -173,42 +173,49 @@ input[type="text"],input[type="password"] {
 
 		<!-- img src="assets/images/laboratory.jpg" alt=""-->
 
-
+ 
 		<div class="well">
-			<div style="width: 500px" align="left">
-
-				<s:form id="myForm" action="InscriptionPatient" theme="bootstrap"
+		<div class="tabbable" style="margin-bottom: 18px;">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab">Donn&eacute;es d'authentification</a></li>
+                <li><a href="#tab2" data-toggle="tab">Donn&eacute;es personnelles</a></li>
+                <li><a href="#tab3" data-toggle="tab">Contact</a></li>
+              </ul>
+              <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+                <div class="tab-pane active" id="tab1" style="width: 500px; margin:50px;">
+                  <s:form id="myForm" action="InscriptionPatient" theme="bootstrap"
 					validate="true" name="registerForm"
 					cssClass="bs-example form-horizontal" method="post">
-					<fieldset style="text-align: left;">
-						<legend>Donn&eacute;es d'authentification</legend>
+					
 						<s:textfield label="Identifiant" name="identifiant"
-							cssClass="col-lg-11" placeholder="Cin/Passeport" />
+							cssClass="col-lg-11" placeholder="Cin/Passeport" cssStyle="width:312px" />
 						<table>
 							<tr>
 								<td><s:password label="Password" name="password"
-										cssClass="col-lg-11" cssStyle="width:317px"
+										cssClass="col-lg-11" cssStyle="width:315px"
 										tooltip="votre mot de passe doit etre plus que 8 caractères de longueur dont les chiffres, les mins, les maj et les caractères spéciaux"
 										placeholder="Password" id="password" /></td>
 								<td id="passwordStrength"></td>
 							</tr>
+							
 						</table>
 						<table>
 							<tr>
 								<td><s:password label="Confirm Password"
 										id="confirmPasswordInput" name="confirmPasswordInput"
-										cssStyle="width:317px" cssClass="col-lg-11"
+										cssStyle="width:315px" cssClass="col-lg-11"
 										placeholder="Confirm Password" /></td>
 								<td id="passwordvalid"></td>
 							</tr>
 						</table>
-						<p>
-						<div class="" id=""></div>
-						</p>
-					</fieldset>
-					<fieldset>
-						<legend>Donn&eacute;es Personnelles</legend>
-
+				
+					</s:form>
+                </div>
+                <div class="tab-pane" id="tab2" style="width: 500px;margin:50px;">
+                  <s:form id="myForm" action="InscriptionPatient" theme="bootstrap"
+					validate="true" name="registerForm"
+					cssClass="bs-example form-horizontal" method="post">
+					 
 						<s:select list="#{'homme':'homme','femme':'femme'}"
 							headerKey="None" headerValue="None" label="Sexe" name="sexe"
 							placeholder="Sexe" cssClass="col-lg-11" />
@@ -218,21 +225,7 @@ input[type="text"],input[type="password"] {
 							name="civilite" placeholder="Civilité" cssClass="col-lg-11" />
 						<s:textfield label="Nom" name="Nom" cssClass="col-lg-11"
 							placeholder="Nom" />
-							<sj:tabbedpanel id="localtabs" cssClass="list">
-  <sj:tab id="tab1" target="jsp" label="JSP Code"/>
-  <sj:tab id="tab2" target="javascript" label="JavaScript"/>
-  <sj:tab id="tab3" target="java" label="Java"/>
-  <div id="jsp">
-    JSP
-  </div>
-  <div id="javascript">
-    JavaScript
-  </div>
-  <div id="java">
-   java                             
 							
-  </div>
-</sj:tabbedpanel> 
 						<s:textfield label="Prénom" name="prenom" cssClass="col-lg-11"
 							placeholder="Prénom" />
 						<s:textfield label="Prénom du père" name="prenomPere"
@@ -289,12 +282,16 @@ input[type="text"],input[type="password"] {
 								label="Bénéficiaire CNAM" />
 						</h2>
 						<h2>
+					
 							<s:checkbox name="fumeur" fieldValue="true" label="fumeur" />
 						</h2>
-					</fieldset>
-					<fieldset>
-						<legend>Contact</legend>
-
+					 </s:form>
+                </div>
+                <div class="tab-pane" id="tab3" style="width: 500px;margin:50px;">
+                   <s:form id="myForm" action="InscriptionPatient" theme="bootstrap"
+					validate="true" name="registerForm"
+					cssClass="bs-example form-horizontal" method="post">
+					 
 						<s:textfield label="Adresse email" name="email"
 							cssClass="col-lg-11" placeholder="Email" />
 
@@ -309,37 +306,14 @@ input[type="text"],input[type="password"] {
 							<s:submit cssClass="btn btn-primary" value="Submit"
 								data-toggle="modal" data-target="#themodal" />
 						</div>
-					</fieldset>
-					<div id="themodal" class="modal fade col-lg-9 col-lg-offset-3"
-						data-backdrop="static">
-						<div class="modal-dialog" style="height: 200px">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"
-										aria-hidden="true">&times;</button>
-									<h3>Signup Form Submission</h3>
-								</div>
-								<div class="modal-body" style="margin: auto;">
-									<p>Are you sure you want to do this?</p>
-									<div class="progress progress-striped active">
-										<div id="doitprogress" class="progress-bar"></div>
-									</div>
-								</div>
-								<div class="modal-footer">
-									<sj:submit cssClass="btn btn-default" value="Close"
-										data-dismiss="modal" />
-									<sj:submit cssClass="btn btn-primary" value="Yes"
-										id="yesbutton" formId="myForm" data-loading-text="Saving.."
-										data-complete-text="Submit Complete!" />
-								</div>
-							</div>
-						</div>
-					</div>
-				</s:form>
+					 
+					</s:form>
+                </div>
+              </div>
+            </div></div>
+				
 			</div>
-		</div>
-
-	</div>
+	
 	<div id="footer">
 		<div>
 			<p>

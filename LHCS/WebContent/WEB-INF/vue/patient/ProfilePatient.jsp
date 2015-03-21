@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="s" uri="/struts-tags"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <%@ taglib prefix="sx" uri="/struts-dojo-tags"%>
@@ -9,179 +9,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Profil Patient - LHCS</title>
-<link rel="stylesheet" href="assets/css/screen.css" type="text/css" media="screen" title="default" />
-<!--[if IE]>
-<link rel="stylesheet" media="all" type="text/css" href="css/pro_dropline_ie.css" />
-<![endif]-->
-
-<!--  jquery core -->
-<script src="assets/js/jquery/jquery-1.4.1.min.js" type="text/javascript"></script>
- 
-<!--  checkbox styling script -->
-<script src="assets/js/jquery/ui.core.js" type="text/javascript"></script>
-<script src="assets/js/jquery/ui.checkbox.js" type="text/javascript"></script>
-<script src="assets/js/jquery/jquery.bind.js" type="text/javascript"></script>
-<script type="text/javascript">
-$(function(){
-	$('input').checkBox();
-	$('#toggle-all').click(function(){
- 	$('#toggle-all').toggleClass('toggle-checked');
-	$('#mainform input[type=checkbox]').checkBox('toggle');
-	return false;
-	});
-});
-</script>  
-
-
-<![if !IE 7]>
-
-<!--  styled select box script version 1 -->
-<script src="assets/js/jquery/jquery.selectbox-0.5.js" type="text/javascript"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-	$('.styledselect').selectbox({ inputClass: "selectbox_styled" });
-});
-</script>
- 
-
-<![endif]>
-
-
-<!--  styled select box script version 2 --> 
-<script src="assets/js/jquery/jquery.selectbox-0.5_style_2.js" type="text/javascript"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-	$('.styledselect_form_1').selectbox({ inputClass: "styledselect_form_1" });
-	$('.styledselect_form_2').selectbox({ inputClass: "styledselect_form_2" });
-});
-</script>
-
-<!--  styled select box script version 3 --> 
-<script src="assets/js/jquery/jquery.selectbox-0.5_style_2.js" type="text/javascript"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-	$('.styledselect_pages').selectbox({ inputClass: "styledselect_pages" });
-});
-</script>
-
-<!--  styled file upload script --> 
-<script src="assets/js/jquery/jquery.filestyle.js" type="text/javascript"></script>
-<script type="text/javascript" charset="utf-8">
-$(function() {
-	$("input.file_1").filestyle({ 
-	image: "assets/images/forms/upload_file.gif",
-	imageheight : 29,
-	imagewidth : 78,
-	width : 300
-	});
-});
-</script>
-
-<!-- Custom jquery scripts -->
-<script src="assets/js/jquery/custom_jquery.js" type="text/javascript"></script>
- 
-<!-- Tooltips -->
-<script src="assets/js/jquery/jquery.tooltip.js" type="text/javascript"></script>
-<script src="assets/js/jquery/jquery.dimensions.js" type="text/javascript"></script>
-<script type="text/javascript">
-$(function() {
-	$('a.info-tooltip ').tooltip({
-		track: true,
-		delay: 0,
-		fixPNG: true, 
-		showURL: false,
-		showBody: " - ",
-		top: -35,
-		left: 5
-	});
-});
-</script> 
-
-<!--  date picker script -->
-<link rel="stylesheet" href="assets/css/datePicker.css" type="text/css" />
-<script src="assets/js/jquery/date.js" type="text/javascript"></script>
-<script src="assets/js/jquery/jquery.datePicker.js" type="text/javascript"></script>
-<script type="text/javascript" charset="utf-8">
-        $(function()
-{
-
-// initialise the "Select date" link
-$('#date-pick')
-	.datePicker(
-		// associate the link with a date picker
-		{
-			createButton:false,
-			startDate:'01/01/2005',
-			endDate:'31/12/2020'
-		}
-	).bind(
-		// when the link is clicked display the date picker
-		'click',
-		function()
-		{
-			updateSelects($(this).dpGetSelected()[0]);
-			$(this).dpDisplay();
-			return false;
-		}
-	).bind(
-		// when a date is selected update the SELECTs
-		'dateSelected',
-		function(e, selectedDate, $td, state)
-		{
-			updateSelects(selectedDate);
-		}
-	).bind(
-		'dpClosed',
-		function(e, selected)
-		{
-			updateSelects(selected[0]);
-		}
-	);
-	
-var updateSelects = function (selectedDate)
-{
-	var selectedDate = new Date(selectedDate);
-	$('#d option[value=' + selectedDate.getDate() + ']').attr('selected', 'selected');
-	$('#m option[value=' + (selectedDate.getMonth()+1) + ']').attr('selected', 'selected');
-	$('#y option[value=' + (selectedDate.getFullYear()) + ']').attr('selected', 'selected');
-}
-// listen for when the selects are changed and update the picker
-$('#d, #m, #y')
-	.bind(
-		'change',
-		function()
-		{
-			var d = new Date(
-						$('#y').val(),
-						$('#m').val()-1,
-						$('#d').val()
-					);
-			$('#date-pick').dpSetSelected(d.asString());
-		}
-	);
-
-// default the position of the selects to today
-var today = new Date();
-updateSelects(today.getTime());
-
-// and update the datePicker to reflect it...
-$('#d').trigger('change');
-});
-</script>
-
-<!-- MUST BE THE LAST SCRIPT IN <HEAD></HEAD></HEAD> png fix -->
-<script src="assets/js/jquery/jquery.pngFix.pack.js" type="text/javascript"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-$(document).pngFix( );
-});
-</script>
 <sb:head includeScripts="false" includeScriptsValidation="false"
 	includeStylesResponsive="true" />
-
-<title>Inscription Patient - LHCS</title>
+<sj:head jqueryui="true" />
+<title>Profile Patient - LHCS</title>
 <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+<link href="assets/css/bootstrap-united.css" rel="stylesheet" />
 
 <style>
 .error { 
@@ -198,7 +32,27 @@ $(document).pngFix( );
 	margin: 16px;
 }
 
-</style></head>
+input[type="text"],input[type="password"] {
+	height: 40px;
+}
+</style>
+<style>
+.datepicker {
+	position: absolute;
+}
+</style>
+
+</head>
+
+<script src="assets/js/jquery/jquery.selectbox-0.5.js" type="text/javascript"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".btn").click(function() {
+			$("#myModal").modal('show');
+		});
+	});
+</script>
 <body> 
 <div id="header">
 		<a href="index.html" class="logo"><img src="assets/images/logo.png" alt=""></a>
@@ -222,171 +76,340 @@ $(document).pngFix( );
         		</div>	
     		</ul>
 	</div>
-<!-- start content-outer -->
-<div id="content-outer">
-<!-- start content -->
-<table></table>
-<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
-<tr>
-	<th rowspan="3" class="sized"><img src="assets/images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
-	<th class="topleft"></th>
-	<td id="tbl-border-top">&nbsp;</td>
-	<th class="topright"></th>
-	<th rowspan="3" class="sized"><img src="assets/images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
-</tr>
-<tr>
-	<td id="tbl-border-left"></td>
-	<td>
-	<!--  start content-table-inner -->
-	<div id="content-table-inner">
+
 	
-	<table border="0" width="100%" cellpadding="0" cellspacing="0">
-	
-	
-	<tr valign="top">
-	<td align="center"><img  src="assets/images/photo.jpg" width="150" height="150"/></br></br><b><s:property value="#session.patient"/></b></td>
-	<td>
-	
-	
-		<!--  start step-holder -->
-		<div id="step-holder">
-			<div class="step-no">1</div>
-			<div class="step-dark-left" style="width: 120px"><a href="ProfilePatient">Profil</a></div>
-			<div class="step-dark-right">&nbsp;</div>
-			<div class="step-no-off">2</div>
-			<div class="step-light-left" style="width: 120px"><a href="DossierCourant">Dossier Courant</a></div>
-			<div class="step-light-right">&nbsp;</div>
-			<div class="step-no-off">3</div>
-			<div class="step-light-left" style="width: 120px"><a href="ActivitesRecentes">Activités récentes</a></div>
-			<div class="step-light-round">&nbsp;</div>
-			<div class="clear"></div>
-		</div>
-		<!--  end step-holder -->
-	<div style="height: 80px;"></div>
-		<!-- start id-form -->
-		<div class="well"  align="center">
-		<table border="0" cellpadding="0" cellspacing="0"  id="id-form" width="100%" align="center">
-			<tr><td><p style="color: #0A996E;"><b>Nom & Prénom</b></p></td><td><p><b style="color: black;"><s:property value="#session.patient"/></b></p></td><td><b>public</b></td></tr>
-			<tr><td><p style="color: #0A996E;"><b>Date de naissance</b></p></td><td><p><b style="color: black;"> <s:property value="#session.dateNaissance"/></b></p></td><td><b>public</b></td></tr>
-			<tr><td><p style="color: #0A996E;"><b>Lieu de Naissance</b></p></td><td><p><b style="color: black;"><s:property value="#session.lieuNaissance"/></b></p></td><td><b>public</b></td></tr>
+	<div id="body">
+<table width="100%" style="background: fuchsia;">
+<tr><td>	<img style=" width : 150px; position: relative;bottom: 5px; height: 150px;" src="assets/images/photo.jpg"><b><br><br><s:property value="#session.patient"/></b>
+<br><br>
+<div class="sidebar" style="height: 500px; border-radius:5px; position: relative;
+  bottom: 5px;">
+			<h3>Menu</h3>
+			<ul>
+				<li>
+					<ul>
+						
+						<li>
+							<a href="#collapse1" class="nav-toggle">Créer dossier</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>
+							<a href="#collapse2" class="nav-toggle" >Ajouter Ordonnance</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+				<ul>
+						
+					</ul>
+				</li>
+				<li>
+					<ul>
+					</ul>
+				</li>
+				<li>
+					
+				</li>
+			</ul>
+		</div></td>
+<td> 
+		<div class="well" style="width: 90%;" >
+		<div class="tabbable" style="margin-bottom: 18px;">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab">Profil</a></li>
+                <li><a href="#tab2" data-toggle="tab">Dossier courant</a></li>
+                <li><a href="#tab3" data-toggle="tab">Activités récentes</a></li>
+              </ul>
+              <div class="tab-content" style="padding-bottom: 9px; border-bottom: 1px solid #ddd;">
+                <div class="tab-pane active" id="tab1" style="margin:50px;">
+                  <table border="0" cellpadding="0" cellspacing="0"  id="id-form" width="100%" align="center">
+			<tr><td><p style="color: #0A996E;">Nom & Prénom</p></td><td><p style="color: black;"><s:property value="#session.patient"/></p></td><td>public</td></tr>
+			<tr><td><p style="color: #0A996E;">Date de naissance</p></td><td><p style="color: black;"> <s:property value="#session.dateNaissance"/></p></td><td>public</td></tr>
+			<tr><td><p style="color: #0A996E;">Lieu de Naissance</p></td><td><p style="color: black;"><s:property value="#session.lieuNaissance"/></p></td><td>public</td></tr>
 			
-			<tr><td><p style="color: #0A996E;"><b>Tuteur</b></p></td><td><p><b style="color: black;"> <s:property value="#session.tuteur"/></b></p></td><td><b>moi uniquement</b></td></tr>	
+			<tr><td><p style="color: #0A996E;">Tuteur</p></td><td><p style="color: black;"> <s:property value="#session.tuteur"/></p></td><td>moi uniquement</td></tr>	
 			
-			<tr><td><p style="color: #0A996E;"><b>Lien familial du tuteur</b></p></td><td><p><b style="color: black;"><s:property value="#session.lienTuteur"/></b></p></td><td><b>moi uniquement</b></td></tr>
+			<tr><td><p style="color: #0A996E;">Lien familial du tuteur</p></td><td><p style="color: black;"><s:property value="#session.lienTuteur"/></p></td><td>moi uniquement</td></tr>
 			
-			<tr><td><p style="color: #0A996E;"><b>Téléphone fixe</b></p></td><td><p><b style="color: black;"><s:property value="#session.fixe"/></b></p></td><td><b>public</b></td></tr>
+			<tr><td><p style="color: #0A996E;">Téléphone fixe</p></td><td><p  style="color: black;"><s:property value="#session.fixe"/></p></td><td>public</td></tr>
 			
-			<tr><td><p style="color: #0A996E;"><b>Téléphone mobile</b></p></td><td><p><b style="color: black;"><s:property value="#session.mobile"/></b></p></td><td><b>public</b></td></tr>
+			<tr><td><p style="color: #0A996E;">Téléphone mobile</p></td><td><p style="color: black;"><s:property value="#session.mobile"/></p></td><td>public</td></tr>
 			
-			<tr><td><p style="color: #0A996E;"><b>Email</b> </p></td><td><p><b style="color: black;"><s:property value="#session.mail"/></b></p></td><td><b>professionnels de santé</b></td></tr>
+			<tr><td><p style="color: #0A996E;">Email</p></td><td><p style="color: black;"><s:property value="#session.mail"/></p></td><td><p>professionnels de santé</p></td></tr>
 			
-			<tr><td><p style="color: #0A996E;"><b>Adresse</b></p></td><td><p><b style="color: black;"><s:property value="#session.adresse"/></b></p></td><td><b>public</b></td>
+			<tr><td><p style="color: #0A996E;">Adresse</p></td><td><p style="color: black;"><s:property value="#session.adresse"/></p></td><td>public</td>
 			</tr>
 			<tr align="right">
 			
-		<td  colspan="3" style="padding-right:0px;" align="right">
-			
-			<s:submit cssClass="btn btn-primary" value="Edit profile" cssStyle=" background:#00ba8b; "/>			
-						
-		</td>
+		<td width="33%"></td><td width="33%"></td><td align="right" colspan="5">
+								<s:submit cssClass="btn btn-primary" value="Editer profil"
+									data-toggle="modal" data-target="#themodal" /></td>
+	</tr>
+	</table>
+              </div>
+                <div class="tab-pane" id="tab2" style="margin:50px;">
+                  <table border="0" cellpadding="0" cellspacing="0"  id="id-form" width="100%"  align="center">
+		
+		
+		
+	<tr>
+	<td>Ordonnances récentes <a href="" style="color: #00ba8b;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afficher plus<br><br></a>
+	<div class="widget widget-table action-table" style="width:100%;">
+            <div class="widget-header"> <i class="icon-th-list"></i>
+              <h3>Liste des ordonnances</h3>
+            </div>
+            <!-- /widget-header -->
+           
+	<div class="widget-content" >
+    <table class="table table-striped table-bordered" width="100%">
+<tr class="even">
+<th>Num&eacute;ro d'ordonnance</th>
+<th>Date</th>
+<th>Maladie concernée</th>
+<th>Médecin responsable</th>
+
+</tr>
+
+
+<s:iterator  value="listeOrdo">
+<tr>
+<td><s:property value="id" /></td>
+<td><s:property value="date" /></td>
+
+<td><s:property value="maladie" /></td>
+<td><s:property value="medecinResponsable" /></td>
+<td><a href="#" style="color: #00ba8b;" ><i class="icon-large icon-file"></i>&nbsp;&nbsp;display</a></td>
+<td><a href="#" style="color: #00ba8b;"><i class="icon-large icon-print"></i>&nbsp;&nbsp;print</a></td>
+
+</tr>
+
+</s:iterator>
+</table>
+
+</div></div>
+	Résultats des analyses récentes<a href="" style="color: #00ba8b;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afficher plus<br><br></a>
+			<div class="widget widget-table action-table">
+            <div class="widget-header"> <i class="icon-th-list"></i>
+              <h3>Liste des résultats des analyses</h3>
+            </div>
+            <!-- /widget-header -->
+           
+	<div class="widget-content" >
+    <table class="table table-striped table-bordered">
+<tr class="even">
+<th>Nom</th>
+<th>Prenom</th>
+<th>status</th>
+
+</tr>
+<s:iterator value="" status="userStatus">
+<tr>
+<td><s:property value="nom" /></td>
+<td><s:property value="prenom" /></td>
+<td><s:property value="isadmin" /></td>
+</tr>
+</s:iterator>
+</table>
+
+</div></div>
+   Images médicales récentes<a href="" style="color: #00ba8b;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afficher plus<br><br></a>
+    		<div class="widget widget-table action-table">
+            <div class="widget-header"> <i class="icon-th-list"></i>
+              <h3>Listes des images médicales</h3>
+            </div>
+            <!-- /widget-header -->
+           
+	<div class="widget-content" >
+    <table class="table table-striped table-bordered">
+<tr class="even">
+<th>Nom</th>
+<th>Prenom</th>
+<th>status</th>
+
+</tr>
+<s:iterator value="" status="userStatus">
+<tr>
+<td><s:property value="nom" /></td>
+<td><s:property value="prenom" /></td>
+<td><s:property value="isadmin" /></td>
+</tr>
+</s:iterator>
+</table>
+
+</div>
+</div>
+	Synthèses des massages médicaux récents<a href="" style="color: #00ba8b;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afficher plus<br><br></a>
+			<div class="widget widget-table action-table">
+            <div class="widget-header"> <i class="icon-th-list"></i>
+              <h3>Liste des synthèses des massages médicaux</h3>
+            </div>
+            <!-- /widget-header -->
+           
+	<div class="widget-content" >
+    <table class="table table-striped table-bordered">
+<tr class="even">
+<th>Nom</th>
+<th>Prenom</th>
+<th>status</th>
+
+</tr>
+<s:iterator value="" status="userStatus">
+<tr>
+<td><s:property value="nom" /></td>
+<td><s:property value="prenom" /></td>
+<td><s:property value="isadmin" /></td>
+</tr>
+</s:iterator>
+</table>
+
+</div></div>
+	
+</td>	</tr>
+		<!-- ****************************** -->
+	<tr>
+		
 		<td></td>
 	</tr>
 	</table>
-	
-	<!-- end id-form  -->
-	</div>
-
-	</td>
-	<td>
-	<div class="clear" style="height: 120px">&nbsp;</div>
-	<!--  start related-activities -->
-	<div id="related-activities">
-		
-		<!--  start related-act-top -->
-		<div id="related-act-top">
-		<img src="assets/images/forms/header_related_act.gif" width="271" height="43" alt="" />
-		</div>
-		<!-- end related-act-top -->
- <!--  start related-act-bottom -->
-		<div id="related-act-bottom">
-		
-			<!--  start related-act-inner -->
-			<div id="related-act-inner">
-			
-				<div class="left"><a href=""><i class="icon-large icon-plus"></i></a></div>
-				<div class="right">
-					<h5>Importer nouveau document</h5>
-					Lorem ipsum dolor sit amet consectetur
-					adipisicing elitsed do eiusmod tempor.
-					<ul class="greyarrow">
-						<li><a href="">Click here to visit</a></li> 
-						<li><a href="">Click here to visit</a> </li>
-					</ul>
-				</div>
-			<div class="left"><a href=""><i class="icon-large icon-remove"></i></a></div>
-				<div class="right">
-					<h5>Supprimer un document</h5>
-					Lorem ipsum dolor sit amet consectetur
-					adipisicing elitsed do eiusmod tempor.
-					<ul class="greyarrow">
-						<li><a href="">Click here to visit</a></li> 
-						<li><a href="">Click here to visit</a> </li>
-					</ul>
-				</div>				
-				<div class="left"><a href=""><i class="icon-large icon-edit"></i></a></div>
-				<div class="right">
-					<h5>Edit categories</h5>
-					Lorem ipsum dolor sit amet consectetur
-					adipisicing elitsed do eiusmod tempor.
-					<ul class="greyarrow">
-						<li><a href="">Click here to visit</a></li> 
-						<li><a href="">Click here to visit</a> </li>
-					</ul>
-				</div>
-				<div class="clear"></div>
-				
-			</div>
-			<!-- end related-act-inner -->
-			<div class="clear"></div>
-		
-		</div>
-		<!-- end related-act-bottom -->
-	
-	</div>
-	<!-- end related-activities -->
-
-</td>
+                </div>
+                <div class="tab-pane" id="tab3" style="margin:50px;">
+                   <table border="0" cellpadding="0" cellspacing="0"  id="id-form" style="width:100%;">
+		<tr>
+	<td>Consultations médicales <a href="" style="color: #00ba8b;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afficher plus<br><br></a>
+	<div class="widget widget-table action-table" style="width:100%;">
+            <div class="widget-header"> <i class="icon-th-list"></i>
+              <h3>Liste des consultations médicales récentes</h3>
+            </div>
+            <!-- /widget-header -->
+           
+	<div class="widget-content" >
+    <table class="table table-striped table-bordered" width="100%">
+<tr class="even">
+<th>Num&eacute;ro de consultation</th>
+<th>Date de consultation</th>
+<th>Médecin Responsable</th>
+<th>lieu de consultation</th>
+<th>Adresse</th>
+<th>Contact</th>
 </tr>
 
-</table>
- 
-<div class="clear"></div>
- 
 
-</div>
-<!--  end content-table-inner  -->
-</td>
-<td id="tbl-border-right"></td>
-</tr>
+<s:iterator  value="">
 <tr>
-	<th class="sized bottomleft"></th>
-	<td id="tbl-border-bottom">&nbsp;</td>
-	<th class="sized bottomright"></th>
+<td><s:property value="id" /></td>
+<td><s:property value="date" /></td>
+
+<td><s:property value="maladie" /></td>
+<td><s:property value="medecinResponsable" /></td>
+<td><a href="#"><i class="icon-large icon-file"></i></a></td>
+<td><a href="#"><i class="icon-large icon-print"></i></a></td>
+
 </tr>
+
+</s:iterator>
 </table>
+
+</div></div>
+	Analyses récentes<a href="" style="color: #00ba8b;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afficher plus<br><br></a>
+			<div class="widget widget-table action-table">
+            <div class="widget-header"> <i class="icon-th-list"></i>
+              <h3>Liste d'analyses</h3>
+            </div>
+            <!-- /widget-header -->
+           
+	<div class="widget-content" >
+    <table class="table table-striped table-bordered">
+<tr class="even">
+<th>Numéro d'analyse</th>
+<th>Date d'analyse</th>
+<th>Biologiste Responsable</th>
+<th>Centre d'analyse</th>
+<th>Adresse</th>
+<th>Contact</th>
+</tr>
+<s:iterator value="" status="userStatus">
+<tr>
+<td><s:property value="nom" /></td>
+<td><s:property value="prenom" /></td>
+<td><s:property value="isadmin" /></td>
+</tr>
+</s:iterator>
+</table>
+
+</div></div>
+   Imageries médicales récentes<a href="" style="color: #00ba8b;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afficher plus<br><br></a>
+    		<div class="widget widget-table action-table">
+            <div class="widget-header"> <i class="icon-th-list"></i>
+              <h3>Listes des images médicales</h3>
+            </div>
+            <!-- /widget-header -->
+           
+	<div class="widget-content" >
+    <table class="table table-striped table-bordered">
+<tr class="even">
+<th>Numéro d'imagerie</th>
+<th>Date d'imagerie</th>
+<th>Radiologue Responsable</th>
+<th>Centre d'imagerie</th>
+<th>Adresse</th>
+<th>Contact</th>
+
+</tr>
+<s:iterator value="" status="userStatus">
+<tr>
+<td><s:property value="nom" /></td>
+<td><s:property value="prenom" /></td>
+<td><s:property value="isadmin" /></td>
+</tr>
+</s:iterator>
+</table>
+
 </div>
-<div class="clear">&nbsp;</div>
+</div>
+	Séances des kinésithérapie récentes<a href="" style="color: #00ba8b;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afficher plus<br><br></a>
+			<div class="widget widget-table action-table">
+            <div class="widget-header"> <i class="icon-th-list"></i>
+              <h3>Liste des séances de kinésithérapie</h3>
+            </div>
+            <!-- /widget-header -->
+           
+	<div class="widget-content" >
+    <table class="table table-striped table-bordered">
+<tr class="even">
+<th>Numéro de massage</th>
+<th>Date de massage</th>
+<th>Masseur Responsable </th>
+<th>Centre de Kiné </th>
+<th>Adresse </th>
+<th>Contact </th>
 
+</tr>
+<s:iterator value="" status="userStatus">
+<tr>
+<td><s:property value="nom" /></td>
+<td><s:property value="prenom" /></td>
+<td><s:property value="isadmin" /></td>
+</tr>
+</s:iterator>
+</table>
 
-<!--  end content -->
-<div class="clear">&nbsp;</div>
-
-<!--  end content-outer -->
-
- 
-
-<div class="clear">&nbsp;</div>
-    
+</div></div>
+	
+</td>	</tr>
+		<!-- ****************************** -->
+	<tr>
+		<td></td>
+	</tr>
+	</table>
+	</div>
+                </div>
+              </div>
+            </div></td></tr>
+				</table>
+			</div>    
 <div id="footer">
 		<div>
 			<p>

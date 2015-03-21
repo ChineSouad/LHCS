@@ -20,6 +20,17 @@ public class MedecinDao {
 		return true;
 		
 	}
+	
+	
+	 public boolean IsIDUnique(String id)
+	    {
+		 Session session=HibernateUtil.getSessionFactory().openSession();
+			session.beginTransaction();
+			 Query query = session.createQuery("SELECT COUNT( * ) FROM Medecin WHERE identifiantPersonnel='"+id+"'");
+			 int i=query.executeUpdate();
+			 return i==0;
+	    }
+	
 	public Medecin chercherId(long id){
 		Session session=HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();

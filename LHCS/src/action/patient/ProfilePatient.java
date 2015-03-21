@@ -1,19 +1,32 @@
 package action.patient;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
+import modele.Medecin;
+import modele.Ordonnance;
+import modele.OrdonnanceDetail;
 import modele.Patient;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import dao.MedecinDao;
+import dao.OrdonnanceDao;
 import dao.PatientDao;
 
 public class ProfilePatient extends ActionSupport implements SessionAware{
 	Patient patient=new Patient();
 	Map <String,Object> session;
 	String adresse;
+	OrdonnanceDao ordonnanceDao = new OrdonnanceDao();
+	
+	List <Ordonnance> listeOrdonnances=new ArrayList<Ordonnance>();
+	List <OrdonnanceDetail>listeOrdo=new ArrayList<OrdonnanceDetail>();
+	MedecinDao medecinDao=new MedecinDao();
+	Medecin medecin =new Medecin();
 	public String execute(){
 		PatientDao patientDao=new PatientDao();
 		patient=patientDao.chercherById(Long.parseLong(session.get("id").toString()));
@@ -27,12 +40,25 @@ public class ProfilePatient extends ActionSupport implements SessionAware{
 		// session.put("tuteur", tuteur);
 		 session.put("lienTuteur", patient.getLienFamilialTuteur());
 		 
-		return SUCCESS;
+		 listeOrdonnances =ordonnanceDao.listeOrdonnances();
+			for (int i=0;i<listeOrdonnances.size();i++){
+				medecin=medecinDao.chercherId((listeOrdonnances.get(i).getMedecinResponsable().getId()));
+				OrdonnanceDetail ordonnanceD=new OrdonnanceDetail(listeOrdonnances.get(i).getId(),listeOrdonnances.get(i).getDate(),listeOrdonnances.get(i).getMaladie(),medecin.getNom()+" "+medecin.getPrenom());
+				
+				listeOrdo.add(ordonnanceD);
+		 
+		
 	}
+			return SUCCESS;}
 
 	
 	
-
+	public List<OrdonnanceDetail> getListeOrdo() {
+		return listeOrdo;
+	}
+	public void setListeOrdo(List<OrdonnanceDetail> listeOrdo) {
+		this.listeOrdo = listeOrdo;
+	}
 	public String getAdresse() {
 		return adresse;
 	}

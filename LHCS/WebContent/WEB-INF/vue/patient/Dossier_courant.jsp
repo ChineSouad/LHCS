@@ -12,12 +12,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Dossier Courant Patient - LHCS</title>
 <link rel="stylesheet" href="assets/css/screen.css" type="text/css" media="screen" title="default" />
-
-<!--[if IE]>
-<link rel="stylesheet" media="all" type="text/css" href="css/pro_dropline_ie.css" />
-<![endif]-->
-
-<!--  jquery core -->
 <script src="assets/js/jquery/jquery-1.4.1.min.js" type="text/javascript"></script>
 
 <!--  checkbox styling script -->
@@ -103,74 +97,6 @@ $(function() {
 <!--  date picker script -->
 <link rel="stylesheet" href="assets/css/datePicker.css" type="text/css" />
 <script src="assets/js/jquery/date.js" type="text/javascript"></script>
-<script src="assets/js/jquery/jquery.datePicker.js" type="text/javascript"></script>
-<script type="text/javascript" charset="utf-8">
-        $(function()
-{
-
-// initialise the "Select date" link
-$('#date-pick')
-	.datePicker(
-		// associate the link with a date picker
-		{
-			createButton:false,
-			startDate:'01/01/2005',
-			endDate:'31/12/2020'
-		}
-	).bind(
-		// when the link is clicked display the date picker
-		'click',
-		function()
-		{
-			updateSelects($(this).dpGetSelected()[0]);
-			$(this).dpDisplay();
-			return false;
-		}
-	).bind(
-		// when a date is selected update the SELECTs
-		'dateSelected',
-		function(e, selectedDate, $td, state)
-		{
-			updateSelects(selectedDate);
-		}
-	).bind(
-		'dpClosed',
-		function(e, selected)
-		{
-			updateSelects(selected[0]);
-		}
-	);
-	
-var updateSelects = function (selectedDate)
-{
-	var selectedDate = new Date(selectedDate);
-	$('#d option[value=' + selectedDate.getDate() + ']').attr('selected', 'selected');
-	$('#m option[value=' + (selectedDate.getMonth()+1) + ']').attr('selected', 'selected');
-	$('#y option[value=' + (selectedDate.getFullYear()) + ']').attr('selected', 'selected');
-}
-// listen for when the selects are changed and update the picker
-$('#d, #m, #y')
-	.bind(
-		'change',
-		function()
-		{
-			var d = new Date(
-						$('#y').val(),
-						$('#m').val()-1,
-						$('#d').val()
-					);
-			$('#date-pick').dpSetSelected(d.asString());
-		}
-	);
-
-// default the position of the selects to today
-var today = new Date();
-updateSelects(today.getTime());
-
-// and update the datePicker to reflect it...
-$('#d').trigger('change');
-});
-</script>
 
 <!-- MUST BE THE LAST SCRIPT IN <HEAD></HEAD></HEAD> png fix -->
 <script src="assets/js/jquery/jquery.pngFix.pack.js" type="text/javascript"></script>
@@ -223,11 +149,13 @@ $(document).pngFix( );
         		<li><a href="contact.html">Contact</a></li>
         		</div>	
     		</ul>
+    		<ul></ul>
 	</div>
+	<div  height: 2px;"></div>
 <!-- start content-outer -->
 <div id="content-outer" align="center">
 <!-- start content -->
-<table></table>
+<table background="#00ba8b" width="3px"></table>
 <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
 <tr>
 	<th rowspan="3" class="sized"><img src="assets/images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>

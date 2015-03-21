@@ -49,6 +49,15 @@
        <action name="UpdatePwd" class="action.medecin.UpdatePwd">
            <result>WEB-INF/vue/medecin/EspaceMedecin.jsp</result>
        </action>
+       <action name="inscriMed1">
+           <result>WEB-INF/vue/medecin/1.jsp</result>
+       </action>
+        <action name="inscriMed2">
+           <result>WEB-INF/vue/medecin/2.jsp</result>
+       </action>
+        <action name="inscriMed3">
+           <result>WEB-INF/vue/medecin/3.jsp</result>
+       </action>
     </package>
     <!-- ************************************************************************************* -->
     
@@ -89,5 +98,14 @@
        <action name="ActivitesRecentes">
            <result>WEB-INF/vue/patient/ActivitePatient.jsp</result>
        </action>
-</package>
+       <action name="inscriPat1">
+           <result>WEB-INF/vue/patient/1.jsp</result>
+       </action>
+        <action name="inscriPat2">
+           <result>WEB-INF/vue/patient/2.jsp</result>
+       </action>
+        <action name="inscriPat3">
+           <result>WEB-INF/vue/patient/3.jsp</result>
+       </action>
+    </package>
 </struts>

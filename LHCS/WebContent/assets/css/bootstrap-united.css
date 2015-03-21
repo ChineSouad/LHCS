@@ -4280,6 +4280,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav > li > a:focus {
   text-decoration: none;
   background-color: #eeeeee;
+  color:#00ba8b;
 }
 
 .nav > li.disabled > a {
@@ -4326,6 +4327,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li {
   float: left;
   margin-bottom: -1px;
+  width: 170px;
 }
 
 .nav-tabs > li > a {
