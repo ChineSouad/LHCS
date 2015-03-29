@@ -28,7 +28,7 @@ public class MailValidation {
         Session session = Session.getDefaultInstance(props,
             new javax.mail.Authenticator() {
                 protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication("so.chine@logswep.com","1KwB7Zb57");
+                    return new PasswordAuthentication();
                 }
             });
 
